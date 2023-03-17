@@ -43,14 +43,58 @@ module.exports = {
             // ========================================================
             // ========================================================
             {
-                date: '2021.02 ~',
-                activity: '개인 블로그 개발 및 운영',
+                date: '2020.02 ~ 2022.03',
+                activity: 'IT 연합 창업 동아리 『멋쟁이사자처럼』 활동 및 학교 9기 대표',
+                links: {},
+            },
+            {
+                date: '2020.08 ~ 2023.03',
+                activity: '모델 포트폴리오 웹사이트 『arinniee』 개발 및 운영',
                 links: {
-                    post: '/gatsby-starter-zoomkoding-introduction',
-                    github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-                    demo: 'https://www.zoomkoding.com',
+                    post: '/projects/arinniee',
                 },
             },
+            {
+                date: '2020.10 ~ 2023.03',
+                activity: '개인 포트폴리오 웹사이트 개발 및 운영',
+                links: {
+                    post: '/projects/portfolio',
+                },
+            },
+            {
+                date: '2021.01 ~ 2022.02',
+                activity: 'MUSINSA 프론트엔드개발팀 근무 (계약직)',
+                links: {
+                    post: '/activities/musinsa',
+                },
+            },
+            {
+                date: '2021.05 ~ 2022.05',
+                activity: 'MUSINSA 업무 자동화 프로그램 『spauto』 개발',
+                links: {
+                    post: '/projects/spauto',
+                    github: 'https://github.com/ynawhocodes/self-perish-project',
+                },
+            },
+            {
+                date: '2021.09 ~',
+                activity: '『수정광산』 개발 및 운영',
+                links: {
+                    post: '/projects/crystalmine',
+                    github: 'https://github.com/sungshin-community',
+                    googlePlay: 'https://play.google.com/store/apps/details?id=com.crystalminefrontend',
+                    appStore: 'https://apps.apple.com/kr/app/%EC%88%98%EC%A0%95%EA%B4%91%EC%82%B0/id1641132567',
+                },
+            },
+            {
+                date: '2022.11 ~',
+                activity: '『QmA』 기획 및 개발',
+                links: {
+                    post: '/projects/qma',
+                    github: 'https://github.com/orgs/QmA-project/repositories',
+                },
+            },
+
         ],
 
         projects: [
@@ -72,14 +116,12 @@ module.exports = {
             // ========================================================
             // ========================================================
             {
-                title: '개발 블로그 테마 개발',
-                description: '개발 블로그를 운영하는 기간이 조금씩 늘어나고 점점 많은 생각과 경험이 블로그에 쌓아가면서 제 이야기를 담고 있는 블로그를 직접 만들어보고 싶게 되었습니다. 그동안 여러 개발 블로그를 보면서 좋았던 부분과 불편했던 부분들을 바탕으로 레퍼런스를 참고하여 직접 블로그 테마를 만들게 되었습니다.',
-                techStack: ['gatsby', 'react'],
-                thumbnailUrl: 'blog.png',
+                title: '모델 포트폴리오 웹사이트 『arinniee』 개발 및 운영',
+                description: '',
+                techStack: ['django', 'html/css', 'aws'],
+                thumbnailUrl: 'arinniee_thumbnail.jpg',
                 links: {
-                    post: '/gatsby-starter-zoomkoding-introduction',
-                    github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-                    demo: 'https://www.zoomkoding.com',
+                    post: '/projects/arinniee',
                 },
             },
         ],
