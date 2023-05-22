@@ -44,7 +44,7 @@ module.exports = {
             // ========================================================
             {
                 date: '2020.02 ~ 2022.03',
-                activity: 'IT 연합 창업 동아리 『멋쟁이사자처럼』 활동 및 학교 9기 대표',
+                activity: 'IT 연합 창업 동아리 『멋쟁이사자처럼』 활동 및 9기 학교 대표',
                 links: {},
             },
             {
@@ -94,7 +94,6 @@ module.exports = {
                     github: 'https://github.com/orgs/QmA-project/repositories',
                 },
             },
-
         ],
 
         projects: [
@@ -122,6 +121,47 @@ module.exports = {
                 thumbnailUrl: 'arinniee_thumbnail.jpg',
                 links: {
                     post: '/projects/arinniee',
+                },
+            },
+            {
+                title: '개인 포트폴리오 웹사이트 개발 및 운영',
+                description: '',
+                techStack: ['django', 'html/css', 'aws'],
+                thumbnailUrl: 'portfolio_thumbnail.jpg',
+                links: {
+                    post: '/projects/portfolio',
+                },
+            },
+            {
+                title: '업무 자동화 프로그램 『spauto』 개발',
+                description: '',
+                techStack: ['python', 'cv2'],
+                thumbnailUrl: 'spauto_thumbnail.jpg',
+                links: {
+                    post: '/projects/spauto',
+                    github: 'https://github.com/ynawhocodes/self-perish-project',
+                },
+            },
+            {
+                title: '『수정광산』 개발 및 운영',
+                description: '',
+                techStack: ['react native', 'typescript'],
+                thumbnailUrl: 'crystalmine_thumbnail.jpg',
+                links: {
+                    post: '/projects/crystalmine',
+                    github: 'https://github.com/sungshin-community',
+                    googlePlay: 'https://play.google.com/store/apps/details?id=com.crystalminefrontend&hl=ko',
+                    appStore: 'https://apps.apple.com/kr/app/%EC%88%98%EC%A0%95%EA%B4%91%EC%82%B0/id1641132567',
+                },
+            },
+            {
+                title: '『QmA』 기획 및 개발',
+                description: '',
+                techStack: ['nodejs', 'react native', 'mysql', 'k8', 'jenkins', 'docker'],
+                thumbnailUrl: 'qma_thumbnail.jpg',
+                links: {
+                    post: '/projects/qma',
+                    github: 'https://github.com/orgs/QmA-project/repositories',
                 },
             },
         ],
