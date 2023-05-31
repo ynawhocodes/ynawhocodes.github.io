@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-blog-template-js",
+    "path": "/crystalmine-admin/",
+    "result": {"data":{"cur":{"id":"b70e083d-b3dd-5e48-a407-81d68f8ce0bd","html":"","excerpt":"","frontmatter":{"date":"May 20, 2023","title":"『수정광산』의 어드민 또한 하나의 서비스였다","categories":"🎳project 💭retrospect","author":"ynawhocodes","emoji":"⚙️"},"fields":{"slug":"/crystalmine-admin/"}},"next":{"id":"8c4edd14-d959-5ac1-b2cc-7823cdc8ce50","html":"","frontmatter":{"date":"April 05, 2023","title":"『수정광산』의 자세한 개발 이야기","categories":"🎳project 💭retrospect","author":"ynawhocodes","emoji":"💾"},"fields":{"slug":"/projects/crystalmine-tech/"}},"prev":null,"site":{"siteMetadata":{"siteUrl":"https://ynawhocodes.github.io","comments":{"utterances":{"repo":""}}}}},"pageContext":{"slug":"/crystalmine-admin/","nextSlug":"/projects/crystalmine-tech/","prevSlug":""}},
+    "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
