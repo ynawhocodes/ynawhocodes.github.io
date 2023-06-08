@@ -409,8 +409,8 @@ FE팀 0기는 총 2명(초기엔 4명이었는데 개인 사정상 나가셨습�
         loading="lazy"
         decoding="async"
       />
-    </span>
-다양한 HTTP 상태 코드에 따라 대응을 할 수 있도록 서버 호출 때마다 에러 처리를 했습니다.
+    </span></p>
+<p>다양한 HTTP 상태 코드에 따라 대응을 할 수 있도록 서버 호출 때마다 에러 처리를 했습니다.
 특히 500 에러일 경우 영역별로 지정해둔 에러 코드도 함께 화면에 노출되도록 해두어 에러가 났을 경우 빠른 원인 파악으로 빠른 해결을 할 수 있도록 하였습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">...</span>
 <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sendEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -478,8 +478,8 @@ FE팀 0기는 총 2명(초기엔 4명이었는데 개인 사정상 나가셨습�
       />
     </span>
 로그에는 사용자들이 로그아웃될 때마다 REFRESH_TOKEN_NOT_FOUND 오류코드 출력되었기에 만료된 refresh Token으로 토큰 재발급을 요청 부분이 잘못되었거나, 토큰 재발급 후 받은 새로운 refresh Token을 제대로 기기에 저장하고 있지 않다고 생각했습니다. 하지만 이 부분에서 버그를 찾을 수 없었기에 오류 보고 구글폼을 생성하여 사용자들에게 참여를 부탁했습니다. 설문 결과와 로그를 통해 글 목록을 이용할 때 강제 로그아웃이 된다는 경험이 많다는 걸 알 수 있었습니다.</p>
-<p>3️⃣ <strong>원인</strong>
-<img src="/ac517f1a7b80f914a9459c6269e2033a/cmt_08.gif" alt="cmt_06_자동 로그아웃 문제 구현">
+<p>3️⃣ <strong>원인</strong></p>
+<p><img src="/ac517f1a7b80f914a9459c6269e2033a/cmt_08.gif" alt="cmt_06_자동 로그아웃 문제 구현">
 예상대로 장애 상황을 구현해보니 스크린의 n%만큼 글 목록이 차지할 경우 다음 페이지의 글 목록을 불러오는 API를 호출하기 때문에 글 목록화면에서 마지막 글 postItem이 스크린의 n% 부분에 애매하게 걸쳐질 경우 다음 페이지를 무한으로 호출하는 이슈가 발생하였습니다.</p>
 <p>API를 무한으로 호출하고 있는 사이 refreshtoken을 받아야할 경우 401에러가 발생했고 이는 접근 권한 없음으로 강제 로그아웃까지 되는 장애가 일어나 사용자가 불편을 겪어야했습니다.</p>
 <p>4️⃣ <strong>해결 방법과 느낀점</strong></p>
@@ -502,11 +502,52 @@ onEndReached<span class="token operator">=</span><span class="token punctuation"
     <span class="token function">setIsNextPageLoading</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <p>마지막 페이지일 경우엔 다음페이지를 호출 안하도록 코드를 수정하여 불필요한 API 호출을 최소화할 수 있었습니다. 해당 에러는 재발생을 방지하고자 문서화하여 팀 내 공유하였습니다. 또한 사소하다고 생각할 수 있는 에러처리를 안할 경우 예상치도 못 한 문제와 엮어 더 큰 에러를 발생할 수 있다는 것을 배울 수 있었습니다.</p>
-<h3 id="2-댓글-중복-작성-code-classlanguage-text작성-중code" style="position:relative;"><a href="#2-%EB%8C%93%EA%B8%80-%EC%A4%91%EB%B3%B5-%EC%9E%91%EC%84%B1-code-classlanguage-text%EC%9E%91%EC%84%B1-%EC%A4%91code" aria-label="2 댓글 중복 작성 code classlanguage text작성 중code permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 댓글 중복 작성 <code class="language-text">작성 중</code></h3>
-<h3 id="3-그-외-code-classlanguage-text작성-중code" style="position:relative;"><a href="#3-%EA%B7%B8-%EC%99%B8-code-classlanguage-text%EC%9E%91%EC%84%B1-%EC%A4%91code" aria-label="3 그 외 code classlanguage text작성 중code permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 그 외 <code class="language-text">작성 중</code></h3>
-<blockquote>
-<p>크로스 플랫폼이어도 OS를 고려해야하다니…!</p>
-</blockquote>
+<h3 id="2-setstate로-인해-체크-박스-상태-값이-잘-적용되지-않는-문제" style="position:relative;"><a href="#2-setstate%EB%A1%9C-%EC%9D%B8%ED%95%B4-%EC%B2%B4%ED%81%AC-%EB%B0%95%EC%8A%A4-%EC%83%81%ED%83%9C-%EA%B0%92%EC%9D%B4-%EC%9E%98-%EC%A0%81%EC%9A%A9%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C" aria-label="2 setstate로 인해 체크 박스 상태 값이 잘 적용되지 않는 문제 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. setState로 인해 체크 박스 상태 값이 잘 적용되지 않는 문제</h3>
+<p>1️⃣ <strong>에러 발생</strong><br>
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 57.77777777777777%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABoklEQVQoz11TzY7yMAzs+z8MF8QBuPEI30q7B1asKnEo0KZpStM0P8yncUlVYakQ3Ml4xjbFOI5omgZKKXjvwXg+n6jrGlprxBglF0IQDLHWWsmt705+klxRliW22y32+z3u97uAzuczNpsNTqcTWqWlkDEGx+NRsJfLRUiv1yt2ux0Oh4PcZdFimmZmxuv1koopJTmLMh/R9z2sHRdcCkBTK1g7LLkYEtzoUCjVwrlJVPgQxOrj8RBFLMZnGAbBhBilBX4K0K2GMf0b4zE6B+ccCn6EQGASwrZtxc7n432YCVMSB13X4TlYISIhBQlhtpYbT2XrIJAK55YAKc7t4MBM3y9DYxEhZG9yH2MMUHUn9tzk3oQTBmtR/v3i5/sL/8oLtDFCyG3IgkgshFRF9qxQ605AuXJWqNsGqqlRtY3YpOW1u4Uwk2XCznTLxD8tr9ZBCNfbsBB+ViFwHSxCa9zPXPz1JlzH0kOCuZTcPyrhUJirqkomPq+MkxXhSt1uN3lPQr7jXeZ5pptC9srPY+eZ1amKv9f95XfOZ9znXf71/gPseKFj4HwSNwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="cmt_09_체크 박스 상태 값이 잘 적용되지 않는 문제"
+        title="cmt_09_체크 박스 상태 값이 잘 적용되지 않는 문제"
+        src="/static/4b56f316605a55ea6b8152feec7f8dbf/37523/cmt_09.png"
+        srcset="/static/4b56f316605a55ea6b8152feec7f8dbf/e9ff0/cmt_09.png 180w,
+/static/4b56f316605a55ea6b8152feec7f8dbf/f21e7/cmt_09.png 360w,
+/static/4b56f316605a55ea6b8152feec7f8dbf/37523/cmt_09.png 720w,
+/static/4b56f316605a55ea6b8152feec7f8dbf/302a4/cmt_09.png 1080w,
+/static/4b56f316605a55ea6b8152feec7f8dbf/07a9c/cmt_09.png 1440w,
+/static/4b56f316605a55ea6b8152feec7f8dbf/87629/cmt_09.png 2076w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+위와 같이 게시판 생성과 게시글 작성에는 텍스트 필드와 체크 박스 필드가 있습니다. 체크 박스를 체크나 해제 후 텍스트를 작성하면 체크 박스 상태 값이 제대로 상태 반영이 되는데, 텍스트부터 작성 후 체크 박스를 체크하거나 해제하면 체크 박스 상태값이 적용이 안되어 게시판의 HOT 게시판 정보와 글의 익명 여부가 풀리는 등의 문제가 발생하였습니다.</p>
+<p>2️⃣ <strong>장애 해결을 위한 노력</strong></p>
+<p>그래서 다음과 같이 useEffect로 익명 여부와 작성 상태 여부(제목과 글을 모두 작성하였는지 상태 검사),이미지의 상태 변화를 주시하며 게시글 작성 완료 버튼을 누를 수 있도록 제어를 했습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isSubmitState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">onSubmitPress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>isAnonymous<span class="token punctuation">,</span> isSubmitState<span class="token punctuation">,</span> images<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>하지만 의문이 생겼습니다. 그럼 setState가 제대로 작동할 때와 제대로 작동 안할 때의 차이가 뭔지 궁금했습니다.</p>
+<p>3️⃣ <strong>원인</strong></p>
+<p>구글링을 통해 알아보니 setState는 batch update라는 비동기적 특성으로 인해 이런 문제가 생겼던 것이었습니다.
+React는 setState가 연속으로 호출된다면 batch update를 통해 이를 한 번에 렌더링한다고 합니다. 즉 useState는 비동기적으로 작동하는 것이고 이렇게 비동기적으로 동작하는 이유는 불필요한 랜더링을 방지하여 성능을 향상하기 위함이라고 합니다. (useState가 동기적으로 동작 시 디버깅에 큰 어려움이 야기될 수 있기 때문)</p>
+<p>4️⃣ <strong>해결 방법과 느낀점</strong></p>
+<p>해결 방법을 알아본 결과 두가지 방법이 있었는데 한가지는 useEffect를 사용한 기존 방법이었고,
+다른 한가지는 setState에 인자로, 업데이트 할 값이 아닌 콜백 함수를 주는 방법이었습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">  onPress<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token function">setIsAnonymous</span><span class="token punctuation">(</span><span class="token parameter">current</span> <span class="token operator">=></span> <span class="token operator">!</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">></span></code></pre></div>
+<p>이 오류로 인해 학습에 있어 왜?가 중요하다는 걸 느낄 수 있었습니다. (학습할 때 setState의 인자로 콜백 함수를 넣는 게 좋다는 말에 의문을 갖지 않은 저를 반성했습니다…)</p>
 <h2 id="-신경썼던-부분있나요" style="position:relative;"><a href="#-%EC%8B%A0%EA%B2%BD%EC%8D%BC%EB%8D%98-%EB%B6%80%EB%B6%84%EC%9E%88%EB%82%98%EC%9A%94" aria-label=" 신경썼던 부분있나요 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>✨ 신경썼던 부분있나요?</h2>
 <h3 id="1-성능" style="position:relative;"><a href="#1-%EC%84%B1%EB%8A%A5" aria-label="1 성능 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 성능</h3>
 <p>1️⃣ <strong>virtual scrolling 이용</strong><br>
@@ -563,7 +604,6 @@ RN은 앱을 부팅하기 전에 모든 JS 코드를 로드하고 구문 분석�
 프로젝트 브랜치 이름 생성 컨벤션은 다음과 같았습니다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx">feat#<span class="token punctuation">{</span>이슈번호<span class="token punctuation">}</span> <span class="token operator">/</span> fix#<span class="token punctuation">{</span>이슈번호<span class="token punctuation">}</span></code></pre></div>
 <p>브랜치 이름에 규칙이 있었으므로 이슈 생성할 때 tag 옵션, issue 번호에 따라 브랜치가 자동으로 생성되도록 GitHub action을 통해 환경을 구축해두어 기능 개발에 더욱 집중할 수 있도록 하였습니다.</p>
-<h2 id="-회고-code-classlanguage-text작성-중code" style="position:relative;"><a href="#-%ED%9A%8C%EA%B3%A0-code-classlanguage-text%EC%9E%91%EC%84%B1-%EC%A4%91code" aria-label=" 회고 code classlanguage text작성 중code permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💭 회고 <code class="language-text">작성 중</code></h2>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -586,8 +626,7 @@ RN은 앱을 부팅하기 전에 모든 JS 코드를 로드하고 구문 분석�
 <p><a href="#-%EC%96%B4%EB%A0%A4%EC%9B%A0%EB%8D%98-%EB%B6%80%EB%B6%84-%EA%B6%81%EA%B8%88%ED%95%B4%EC%9A%94">🪡 어려웠던 부분 궁금해요!</a></p>
 <ul>
 <li><a href="#1-%EC%9E%90%EB%8F%99-%EB%A1%9C%EA%B7%B8%EC%95%84%EC%9B%83-%EB%AC%B8%EC%A0%9C">1. 자동 로그아웃 문제</a></li>
-<li><a href="#2-%EB%8C%93%EA%B8%80-%EC%A4%91%EB%B3%B5-%EC%9E%91%EC%84%B1-%EC%9E%91%EC%84%B1-%EC%A4%91">2. 댓글 중복 작성 <code class="language-text">작성 중</code></a></li>
-<li><a href="#3-%EA%B7%B8-%EC%99%B8-%EC%9E%91%EC%84%B1-%EC%A4%91">3. 그 외 <code class="language-text">작성 중</code></a></li>
+<li><a href="#2-setstate%EB%A1%9C-%EC%9D%B8%ED%95%B4-%EC%B2%B4%ED%81%AC-%EB%B0%95%EC%8A%A4-%EC%83%81%ED%83%9C-%EA%B0%92%EC%9D%B4-%EC%9E%98-%EC%A0%81%EC%9A%A9%EB%90%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%AC%B8%EC%A0%9C">2. setState로 인해 체크 박스 상태 값이 잘 적용되지 않는 문제</a></li>
 </ul>
 </li>
 <li>
@@ -596,9 +635,6 @@ RN은 앱을 부팅하기 전에 모든 JS 코드를 로드하고 구문 분석�
 <li><a href="#1-%EC%84%B1%EB%8A%A5">1. 성능</a></li>
 <li><a href="#2-%EA%B0%9C%EB%B0%9C-%EB%AA%B0%EC%9E%85%EB%8F%84">2. 개발 몰입도</a></li>
 </ul>
-</li>
-<li>
-<p><a href="#-%ED%9A%8C%EA%B3%A0-%EC%9E%91%EC%84%B1-%EC%A4%91">💭 회고 <code class="language-text">작성 중</code></a></p>
 </li>
 </ul>
 </div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/projects/qma/"><div class="direction">이전 글</div><div class="title">졸업을 기념하며 기획부터 개발까지, FE부터 BE까지</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/projects/crystalmine-admin/"><div class="direction">다음 글</div><div class="title">『수정광산』의 어드민 또한 하나의 서비스였다</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2023<!-- --> <a href="https://github.com/ynawhocodes">양나원</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/projects/crystalmine-tech/";window.___webpackCompilationHash="7f39d6edd6e6da29f911";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-9b356b5dc44213e24f34.js"],"app":["/app-652ba2bd42b2270fbf7d.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0b8a70f65d0cff4a7a25.js"],"component---src-pages-404-js":["/component---src-pages-404-js-bc51420b294b9123f97d.js"],"component---src-pages-about-js":["/component---src-pages-about-js-39e57401fb032eafb2fb.js"],"component---src-pages-index-js":["/component---src-pages-index-js-0a6bbda26eb501968935.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-e3a4bb3c9603d1ed8af7.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-a0af7e239c6cf28d9bb9.js"]};/*]]>*/</script><script src="/polyfill-9b356b5dc44213e24f34.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-e3a4bb3c9603d1ed8af7.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-396336af77507a3e6d1a.js" async=""></script><script src="/app-652ba2bd42b2270fbf7d.js" async=""></script><script src="/framework-043f1197be387cb18d15.js" async=""></script><script src="/webpack-runtime-5d8c4653a2dc048b9ece.js" async=""></script></body></html>
