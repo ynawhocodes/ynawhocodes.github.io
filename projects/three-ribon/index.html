@@ -202,11 +202,66 @@ Frenet 프레임에서 현재 인덱스에 해당하는 이접선(binormal)을 �
       />
     </span>
 위 첨부 사진과 같이 브라우저 종류에 따라, 버전에 따라 이슈가 있었습니다. 리본 이미지가 렌더링되지 않거나, 리본 이미지의 패턴화가 통일되지 않은 점이었습니다. 리본 이미지를 텍스쳐로 사용하는 로직에 문제가 있을 것이라 생각하고 해당 로직부터 살펴보았습니다.</p>
-<p>리본 이미지를 불러오는 메소드, 반복해서 wrappingg하는 메소드 중심으로 three 공식 github와 issue 게시판을 모두 읽고 수정/반영해보는 과정 속에서 해결을 할 수 있었습니다.</p>
-<p>해당 문제는 <a href="">이슈</a>로 ~ 하는 문제가 있었습니다.<br>
-따라서 이미지의 세로, 가로 사이즈를 2의 배수로 변경하여 해결하였습니다.
+<p>리본 이미지를 불러오는 메소드, 반복해서 wrappingg하는 메소드 중심으로 <a href="https://github.com/mrdoob/three.js/blob/master/src/loaders/CubeTextureLoader.js">three github</a>와 <a href="https://discourse.threejs.org/t/textures-doesnt-work-on-some-versions-safari/60152">three discourse</a>를 모두 읽고 수정/반영해보는 과정 속에서 해결을 할 수 있었습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 49.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABdElEQVQoz31SWXKDMAzl/hfoAXqFHqI/naTLVzcIO2ENMWBj7NeRiBPaj2p4I1nG0tPiTY8PqNIIzamHEAKw9FlYu4LE2VufMYZ1Oy24fy1x91Rglwt4Sko4kUoiCAPEUYw4jpHnOZIkQZqmDDpHUcSaznRHtrHAYi2MtfDatoXWmgNWVYWX3R5d12EYBiilIKW86mmaGGTTPVVEb5WaIaeJY3hlWUKI80q/afH5/onj8ciZCUVRIMsy1pSQsL4Rt8pmjXEc14B1XfPlsizsmLXG4XBg+L7PJVIAQt/3VxDD6cLKXgJTfz3KSCVSWSSDEPD9b4RhiCDwWbteuf9oIFSqI2E2w/Io01aGcUSUZqjbDmXdgHrcNA2z2U4ZG1a/GBJ9d4C1mI3FebYYDTBo/CO34Fov1zXyXHNdJrMsmJUErdM6QcUgW0qF/nTCOKw9J//f/fTcdJyDGNOOxXGCphfcN7dGVVXj7XmP8OuDh+fasC3/B3/VBGzt7HDrAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="text loder issue img"
+        title="text loder issue img"
+        src="/static/d2c2efe14e2c9f01322ec2bac44ccccf/37523/img_06.png"
+        srcset="/static/d2c2efe14e2c9f01322ec2bac44ccccf/e9ff0/img_06.png 180w,
+/static/d2c2efe14e2c9f01322ec2bac44ccccf/f21e7/img_06.png 360w,
+/static/d2c2efe14e2c9f01322ec2bac44ccccf/37523/img_06.png 720w,
+/static/d2c2efe14e2c9f01322ec2bac44ccccf/302a4/img_06.png 1080w,
+/static/d2c2efe14e2c9f01322ec2bac44ccccf/07a9c/img_06.png 1440w,
+/static/d2c2efe14e2c9f01322ec2bac44ccccf/f3c07/img_06.png 2516w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>해당 문제는 <a href="https://forum.playcanvas.com/t/texture-loaded-from-external-links-not-working-on-safari-browser/13877">Safari가 여러 가지 제한 사항이 있는 WebGL 1.0만 지원하는 이슈</a>로 인해 생긴 문제였고 이미지의 세로, 가로 사이즈를 2의 배수로 변경하여 해결하였습니다.
 브라우저별/버전별로 이슈가 해결됐는지 확인한 후 해당 이슈를 완료한 경험이 있습니다.</p>
 <h3 id="2-인터렉션-커뮤니케이션-개선" style="position:relative;"><a href="#2-%EC%9D%B8%ED%84%B0%EB%A0%89%EC%85%98-%EC%BB%A4%EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98-%EA%B0%9C%EC%84%A0" aria-label="2 인터렉션 커뮤니케이션 개선 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) 인터렉션 커뮤니케이션 개선</h3>
+<p>모션 작업을 진행하며 느낀 점은 모션을 최대한 정확히 구현하기 위해 디자이너가 준비해주신 프로토타입이나 영상으로 최대한 구현할 순 있어도 정확하지 않을 수 있고, 수정사항 발생 시 디자이너도 개발자도 커뮤니케이션 비용이 많이 든다는 것이었습니다.</p>
+<p>그 중 하나가 리본 커브 모양 구현이었습니다. 리본 두께와 리본 둘레, 리본 커브 형태를 수치값으로 소통하기 보단 전달해주신 이미지와 최대한 유사하게 구현하는 것이 최선이었기에 디자이너와 구현 사이의 차이가 있었습니다. 차이를 줄이기 위해 수정하려면 리본 모양이나 커브 방향이 바뀔 때마다 둘레와 커브 포인트에 따른 세타값을 다시 구해야 했었습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 131.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEAgX/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAbWTbhAFUb5K8rANP//EABoQAAIDAQEAAAAAAAAAAAAAAAACAQMRISL/2gAIAQEAAQUC00bFb2ZYcY03tsxDs07LsU+k/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAIRAAAgAEBwEAAAAAAAAAAAAAAAEQITGRAhESIjJCYXH/2gAIAQEABj8CGP2ZRXOo9eFZqDhVnJ3N0/p//8QAHBAAAgMAAwEAAAAAAAAAAAAAAREAITEQUZHB/9oACAEBAAE/IQDweQACkqUE6Ce42+zLGBlBwBVW3ATQr74K22PbT//aAAwDAQACAAMAAAAQp9P9/8QAFhEAAwAAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/EHD/xAAXEQADAQAAAAAAAAAAAAAAAAAAARAR/9oACAECAQE/EDYmf//EACEQAQACAgEDBQAAAAAAAAAAAAEAESFBMWGBoVGRscHR/9oACAEBAAE/EEWUb5RBAAKNBWo8qLWNC+kqu+iR4qWqAphH8ZugGrxXfrLs3tfMHRfNfEwMEi6vH1DwQVAyCWveQjEGzkV3n//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="img"
+        title="img"
+        src="/static/2deb224f70f2e61423b033b8bd9f1a2f/80e3c/img_07.jpg"
+        srcset="/static/2deb224f70f2e61423b033b8bd9f1a2f/4ec73/img_07.jpg 180w,
+/static/2deb224f70f2e61423b033b8bd9f1a2f/158ba/img_07.jpg 360w,
+/static/2deb224f70f2e61423b033b8bd9f1a2f/80e3c/img_07.jpg 720w,
+/static/2deb224f70f2e61423b033b8bd9f1a2f/47311/img_07.jpg 1080w,
+/static/2deb224f70f2e61423b033b8bd9f1a2f/12286/img_07.jpg 1120w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<blockquote>
+<p>세타값을 구하기 위해 노력한 계산들..</p>
+</blockquote>
+<p>하지만 이와 같이 했음에도 디자이너 의도와 구현에 차이가 있었습니다.
+최대한 디자이너 의도에 맞추고 싶어 현재 어떻게 리본 커브를 구현하고 있는지 구현 방식을 상세하게 작성하여 디자이너께 전달하였고, 리본 커브 포인트 개수와 위치를 변수화하여 디자이너분이 직접 제어할 수 있도록 변경했습니다. 이 경험으로 다음 작업부터는 dat.gui를 도입하여 모션 속도, 강도 등 조절이 필요한 부분은 모두 변수화 하였고, 디자이너가 dat.gui를 이용하여 모션을 제어한 후 원하는 모션의 정확한 수치값을 전달받아 모션 구현과 디자인 의도에 차이가 없도록 진행했습니다.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
@@ -231,8 +286,12 @@ Frenet 프레임에서 현재 인덱스에 해당하는 이접선(binormal)을 �
         loading="lazy"
         decoding="async"
       />
-    </span>
-<span
+    </span></p>
+<blockquote>
+<p>[좌측 사진]<AS-IS> 리본 형태 소통 방식 [우측 사진]<TO-BE> 전달한 구현 방식</p>
+</blockquote>
+<p>또한, 리본 외곽에 흐릿한 선이 보이는 이슈가 있었습니다. 이는 해상도 차이에 의한 이미지 계단 현상을 최소화하기 위해 WebGLRenderer의 antialias 값 때문이었습니다. antialias 값을 false로 할 경우 이미지의 계단 현상은 생기는 정도와 리본의 아웃라인은 사라지는 정도를 캡쳐하여  antialias의 효과 여부를 선택하기 쉽도록 전달했습니다.</p>
+<p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
@@ -257,7 +316,9 @@ Frenet 프레임에서 현재 인덱스에 해당하는 이접선(binormal)을 �
         decoding="async"
       />
     </span></p>
-<p>디자이너가 원하는 모션을 최대한 정확히 구현하기 위해선 프로토타입이나 영상이 필요하나, 있어도 정확하지 않을 수 있고, 수정사항 발생 시 디자이너도 개발자도 커뮤니케이션 비용이 많이</p>
+<blockquote>
+<p>이미지 계단 현상 유무에 따른 리본 아웃 라인 현상 정도를 비교하여 전달</p>
+</blockquote>
 <h2 id="️-세상이-모든-것이-아름다워보였던-마무리-순간" style="position:relative;"><a href="#%EF%B8%8F-%EC%84%B8%EC%83%81%EC%9D%B4-%EB%AA%A8%EB%93%A0-%EA%B2%83%EC%9D%B4-%EC%95%84%EB%A6%84%EB%8B%A4%EC%9B%8C%EB%B3%B4%EC%98%80%EB%8D%98-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EC%88%9C%EA%B0%84" aria-label="️ 세상이 모든 것이 아름다워보였던 마무리 순간 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>☀️ 세상이 모든 것이 아름다워보였던 마무리 순간</h2>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -282,4 +343,5 @@ Frenet 프레임에서 현재 인덱스에 해당하는 이접선(binormal)을 �
         loading="lazy"
         decoding="async"
       />
-    </span></p></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/projects/compare-animation-lib/"><div class="direction">이전 글</div><div class="title">[Framer-motion/GSAP/anime.js/Rally] 애니메이션 라이브러리 사용 후기</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/projects/idiom-tech/"><div class="direction">다음 글</div><div class="title">[idiom] 수천만개의 고민이 담긴 이디엄의 기술을 소개합니다.</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/ynawhocodes">양나원</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/projects/three-ribon/";window.___webpackCompilationHash="f119a00629b3c6f1196c";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-9b356b5dc44213e24f34.js"],"app":["/app-652ba2bd42b2270fbf7d.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0b8a70f65d0cff4a7a25.js"],"component---src-pages-404-js":["/component---src-pages-404-js-bc51420b294b9123f97d.js"],"component---src-pages-about-js":["/component---src-pages-about-js-39e57401fb032eafb2fb.js"],"component---src-pages-index-js":["/component---src-pages-index-js-0a6bbda26eb501968935.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-e3a4bb3c9603d1ed8af7.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-a0af7e239c6cf28d9bb9.js"]};/*]]>*/</script><script src="/polyfill-9b356b5dc44213e24f34.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-e3a4bb3c9603d1ed8af7.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-396336af77507a3e6d1a.js" async=""></script><script src="/app-652ba2bd42b2270fbf7d.js" async=""></script><script src="/framework-043f1197be387cb18d15.js" async=""></script><script src="/webpack-runtime-2b0938e826e9a7d86963.js" async=""></script></body></html>
+    </span>
+다행히 완벽한 마무리와 원활한 소통으로 인해 성공적으로 작업을 마칠 수 있었고, 덕분에 같은 디자인 에이전시와 다른 작업도 진행하는 기회가 생길 수 있었습니다.</p></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/projects/compare-animation-lib/"><div class="direction">이전 글</div><div class="title">[Framer-motion/GSAP/anime.js/Rally] 애니메이션 라이브러리 사용 후기</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/projects/idiom-tech/"><div class="direction">다음 글</div><div class="title">[idiom] 중고거래계의 kream, idiom의 기술을 소개합니다</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2024<!-- --> <a href="https://github.com/ynawhocodes">양나원</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/projects/three-ribon/";window.___webpackCompilationHash="f119a00629b3c6f1196c";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-9b356b5dc44213e24f34.js"],"app":["/app-652ba2bd42b2270fbf7d.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0b8a70f65d0cff4a7a25.js"],"component---src-pages-404-js":["/component---src-pages-404-js-bc51420b294b9123f97d.js"],"component---src-pages-about-js":["/component---src-pages-about-js-39e57401fb032eafb2fb.js"],"component---src-pages-index-js":["/component---src-pages-index-js-0a6bbda26eb501968935.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-e3a4bb3c9603d1ed8af7.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-a0af7e239c6cf28d9bb9.js"]};/*]]>*/</script><script src="/polyfill-9b356b5dc44213e24f34.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-e3a4bb3c9603d1ed8af7.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-396336af77507a3e6d1a.js" async=""></script><script src="/app-652ba2bd42b2270fbf7d.js" async=""></script><script src="/framework-043f1197be387cb18d15.js" async=""></script><script src="/webpack-runtime-2b0938e826e9a7d86963.js" async=""></script></body></html>
